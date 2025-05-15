@@ -25,22 +25,46 @@ class Main {
     }
 
 
-    public static int moda(int[] lista){
-        int moda=0;
-        int acumuladorModa=0;
-        for(int nota1: lista){
-            int acumulador=0;
-            for(int nota2: lista){
-                if(nota1==nota2)
-                acumulador++;
+    public static String moda(int[] lista) {
+    int maxRepeticiones = 0;
+
+    for (int i = 0; i < lista.length; i++) {
+        int contador = 0;
+        for (int j = 0; j < lista.length; j++) {
+            if (lista[i] == lista[j]) {
+                contador++;
             }
-            if(acumulador>acumuladorModa){
-                acumuladorModa=acumulador;
-                moda=nota1;
-            }    
         }
-        return moda;
+        if (contador > maxRepeticiones) {
+            maxRepeticiones = contador;
+        }
     }
+
+    if (maxRepeticiones == 1) {
+        return "No hay moda";
+    }
+
+    String modas = "";
+    boolean[] yaContado = new boolean[lista.length];
+
+    for (int i = 0; i < lista.length; i++) {
+        if (yaContado[i]) continue;
+
+        int contador = 0;
+        for (int j = 0; j < lista.length; j++) {
+            if (lista[i] == lista[j]) {
+                contador++;
+                yaContado[j] = true; 
+            }
+        }
+
+        if (contador == maxRepeticiones) {
+            modas += lista[i] + " ";
+        }
+    }
+
+    return modas.trim();
+}
 
     public static int[] ordenar(int[] lista) {
         int[] listaOrdenada = Arrays.copyOf(lista, lista.length);
@@ -85,6 +109,4 @@ class Main {
     }
     return suma / lista.length;
     }
-
-
 }
