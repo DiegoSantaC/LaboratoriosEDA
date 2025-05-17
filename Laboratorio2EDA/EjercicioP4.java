@@ -4,7 +4,7 @@ package com.mycompany.Laboratorio2EDA;
 public class EjercicioP4 {
     public static void main(String[] ar) {
         Recursividad1 r=new Recursividad1();
-        r.trianguloRecursivo2(5);
+        r.trianguloRecursivo2(10);
     }
     
     static class Recursividad1{

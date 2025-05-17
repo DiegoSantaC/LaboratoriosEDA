@@ -1,8 +1,6 @@
 
 package com.mycompany.Laboratorio2EDA;
 
-import java.util.Arrays;
-
 public class EjercicioP3 {
     
     public static void main(String[] ar) {
