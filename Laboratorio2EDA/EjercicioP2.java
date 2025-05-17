@@ -1,13 +1,13 @@
 
 package com.mycompany.Laboratorio2EDA;
-import java.util.*;
+import java.util.Arrays;
 
-public class EjercicioP1 {
+public class EjercicioP2 {
     public static void main(String[] ar) {
-        int[] vec1 = { 20,100 ,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
+        int[] vec1 = {1,2,3,4,5,6,7,8,9,10};
         Recursividad1 r=new Recursividad1();
         r.imprimir(vec1);
-        int[]vec2 = r.invertirArray(vec1);
+        int[]vec2 = r.rotarIzquierdaArray(vec1,5);
         r.imprimir(vec2);
     }
     
@@ -15,20 +15,21 @@ public class EjercicioP1 {
         int cantidad=0;
         int[] B;
         
-        public int[] invertirArray(int[] A){
+        public int[] rotarIzquierdaArray(int[] A,int d){
             if(cantidad==0)
                 B=Arrays.copyOf(A, A.length);
             
-            if(cantidad<B.length/2){
-                int temp=B[cantidad];
-                B[cantidad]=B[B.length-1-cantidad];
-                B[B.length-1-cantidad]=temp;
+            if(cantidad < d){
+                int temp=B[0];
+                for(int i=0;i<B.length-1;i++){
+                B[i]=B[i+1];
+                }
+                B[B.length-1]=temp;
                 cantidad++;
-                invertirArray(B);
+                rotarIzquierdaArray(B,d);
             }
             return B;
-        }
-        
+        }       
         void imprimir(int[] vec) {
             for (int f = 0; f < vec.length; f++)
                 System.out.print(vec[f] + " ");
