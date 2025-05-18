@@ -4,7 +4,7 @@ import java.util.*;
 
 public class EjercicioP1 {
     public static void main(String[] ar) {
-        int[] vec1 = { 20,100 ,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
+        int[] vec1 = {1,2,3,4,5};
         Recursividad1 r=new Recursividad1();
         r.imprimir(vec1);
         int[]vec2 = r.invertirArray(vec1);

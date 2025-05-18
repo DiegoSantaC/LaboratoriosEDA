@@ -5,7 +5,7 @@ public class EjercicioP6 {
     
     public static void main(String[] ar) {
         Recursividad1 r=new Recursividad1();
-        r.cuadradoRecursivo(10);
+        r.cuadradoRecursivo(5);
     }
         
     static class Recursividad1{
