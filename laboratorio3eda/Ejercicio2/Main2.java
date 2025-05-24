@@ -1,17 +1,29 @@
 
 package com.mycompany.laboratorio3eda.Ejercicio2;
-
-/**
- *
- * @author windows
- */
+import java.util.*;
 public class Main2 {
-
-    /**
-     * @param args the command line arguments
-     */
+    
+    public static <T extends Number> double suma(T valor1, T valor2) {
+        return valor1.doubleValue() + valor2.doubleValue();
+    }
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        do{
+            System.out.println("\n--- Menu de Operaciones Clases Genericas ---");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Producto");
+            System.out.println("4. Division");
+            System.out.println("5. Potencia");
+            System.out.println("6. Raiz Cuadrada");
+            System.out.println("7. Raiz Cubica");
+            System.out.println("8++. Salir");
+            System.out.print("Elige una opcion: ");
+            opcion = scanner.nextInt();
+        } while (opcion>=1&&opcion<8);
+        System.out.print("Saliendo del programa----Tenga un buen dia");
     }
     
 }
