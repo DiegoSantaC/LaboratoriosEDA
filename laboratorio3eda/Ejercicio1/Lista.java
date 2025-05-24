@@ -13,5 +13,13 @@ public class Lista<T> {
         nodoAuxiliar.setNextNode(root);
         root=nodoAuxiliar;
     }
+    
+    public String toString() {
+        String str="";
+        for(Node<T> i=root; i!= null ; i=i.getNextNode()){
+            str+=i.toString()+ ",";
+        }
+        return str;
+    }
 }
 

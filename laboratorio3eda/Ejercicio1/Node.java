@@ -28,5 +28,9 @@ public class Node<T> {
     public Node<T> getNextNode() {
         return nextNode;
     }
-    
+
+    @Override
+    public String toString() {
+        return "" + data;
+    }    
 }
