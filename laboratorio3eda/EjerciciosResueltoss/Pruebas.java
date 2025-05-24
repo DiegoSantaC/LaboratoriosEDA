@@ -14,6 +14,10 @@ public class Pruebas {
         System.out.println(alumnos.hashCode());
         System.out.println(alumnos.isEmpty());
         System.out.println(alumnos.size());
+        Iterator<String> itA = alumnos.iterator();
+        while (itA.hasNext()) {
+            System.out.println(itA.next());
+        }
     }
     
 }
