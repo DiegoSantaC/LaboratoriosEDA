@@ -18,6 +18,8 @@ public class Pruebas {
         while (itA.hasNext()) {
             System.out.println(itA.next());
         }
+        ArrayList<Animal> mascotas = new ArrayList<Animal>();
+        ArrayList<Animal> mascotas2 = new ArrayList<Animal>(); /** <- Ver error */
     }
     
 }
