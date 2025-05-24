@@ -1,5 +1,5 @@
 
-package com.mycompany.laboratorio2eda.Ejercicio1;
+package com.mycompany.laboratorio3eda.Ejercicio1;
 
 public class Lista {
     
