@@ -63,6 +63,18 @@ public class Main2 {
                     Double v2 = scanner.nextDouble();
                     ejecutarOperacion(opcion, v1, v2);
                 }
+                } else if (opcion == 6 || opcion == 7) {
+                System.out.print("Tipo (1 = Integer, 2 = Double): ");
+                int tipo = scanner.nextInt();
+                if (tipo == 1) {
+                    System.out.print("Ingrese valor: ");
+                    Integer v = scanner.nextInt();
+                    System.out.println(opcion == 6 ? raizCuadrada(v) : raizCubica(v));
+                } else if (tipo == 2) {
+                    System.out.print("Ingrese valor: ");
+                    Double v = scanner.nextDouble();
+                    System.out.println(opcion == 6 ? raizCuadrada(v) : raizCubica(v));
+                }
             }    
         } while (opcion>=1&&opcion<8);
         System.out.print("Saliendo del programa----Tenga un buen dia");
