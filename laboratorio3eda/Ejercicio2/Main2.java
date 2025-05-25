@@ -7,6 +7,30 @@ public class Main2 {
         return valor1.doubleValue() + valor2.doubleValue();
     }
     
+    public static <T extends Number> double resta(T valor1, T valor2) {
+        return valor1.doubleValue() - valor2.doubleValue();
+    }
+
+    public static <T extends Number> double producto(T valor1, T valor2) {
+        return valor1.doubleValue() * valor2.doubleValue();
+    }
+
+    public static <T extends Number> double division(T valor1, T valor2) {
+        return valor2.doubleValue() == 0 ? Double.NaN : valor1.doubleValue() / valor2.doubleValue();
+    }
+
+    public static <T extends Number> double potencia(T base, T exponente) {
+        return Math.pow(base.doubleValue(), exponente.doubleValue());
+    }
+
+    public static <T extends Number> double raizCuadrada(T valor) {
+        return Math.sqrt(valor.doubleValue());
+    }
+
+    public static <T extends Number> double raizCubica(T valor) {
+        return Math.cbrt(valor.doubleValue());
+    }
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int opcion;
