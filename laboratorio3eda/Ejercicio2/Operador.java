@@ -9,5 +9,12 @@ public class Operador<T extends Number> {
         this.valor1 = valor1;
         this.valor2 = valor2;
     }
-    
+
+    public T getValor1() {
+        return valor1;
+    }
+
+    public T getValor2() {
+        return valor2;
+    }   
 }
