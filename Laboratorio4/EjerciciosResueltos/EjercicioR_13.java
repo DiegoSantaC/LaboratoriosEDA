@@ -17,6 +17,5 @@ public class EjercicioR_13 {
         System.out.println("Actualizada LinkedList: " + list);
         System.out.println("El ultimo elemento removido es: " + list.removeLast());
         System.out.println("Actualizada LinkedList: " + list);
-    }
-    
+    }  
 }
