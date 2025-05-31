@@ -13,5 +13,4 @@ public class EjercicioR8 {
         ll.set(1, "Cuatro");
         System.out.println("Actualizada LinkedList " + ll);
     }
-    
 }
