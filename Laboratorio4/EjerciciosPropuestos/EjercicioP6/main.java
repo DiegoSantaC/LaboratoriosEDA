@@ -16,16 +16,8 @@ public class main {
         lista.removeFirts();
         lista.removeLast();     
         lista.printList();
-        lista.removeFirts();
-        lista.removeLast();     
-        lista.printList();
-        lista.removeFirts();
-        lista.removeLast();     
-        lista.printList();
         
-        lista.removeFirts();
-        lista.removeLast();     
+        lista.deleteByKey(4);
         lista.printList();
-        
     }   
 }

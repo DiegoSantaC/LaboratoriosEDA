@@ -43,7 +43,23 @@ public class DoublyLinkedList<T> {
     }
     
     public void deleteByKey(T e){
-
+        if(!isEmpty()){
+            if(head.getData().equals(e)){
+                head=head.getNext();
+            }else{
+                Node<T> prev=head;
+                Node<T> aux=prev.getNext();
+                while (aux != null && !aux.getData().equals(e)){
+                    prev=aux;
+                    aux=aux.getNext();
+                }
+                if(aux != null)
+                    prev.setNext(aux.getNext());
+                else
+                   System.out.println("No se encontro este elemento en la lista");
+            } count --;
+        } else 
+            System.out.println("La lista esta vacia");
     }
 
     public void deleteAtPosition(int i) {
