@@ -28,6 +28,7 @@ public class main {
         lista.removeLast();
         lista.printList();
         lista.removeLast();
+        System.out.println("El tamanio de mi lista circular es: " + lista.size());
     }
     
 }
