@@ -8,17 +8,19 @@ public class main {
         list.addFirst("Uno");
         list.addFirst("Dos");
         list.addFirst("Tres");
-        list.addLast("Cero");
+        list.addFirst("Cuatro");
+        list.addFirst("Cinco");
+        list.addFirst("Seis");
         list.printList();
         list.removeFirts();
         list.printList();
         list.removeLast();
         list.printList();
-        list.removeLast();
+        list.deleteByKey("Dos");
         list.printList();
-        list.removeLast();
+        list.deleteAtPosition(1);
         list.printList();
-        list.removeLast();
+
         System.out.println("El tamaño de mi lista es: " + list.size());
     }    
 }
