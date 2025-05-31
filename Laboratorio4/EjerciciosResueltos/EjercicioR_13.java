@@ -3,7 +3,7 @@ package com.mycompany.Laboratorio4.EjerciciosResueltos;
 
 import java.util.*;
 
-public class EjercicioR_12 {
+public class EjercicioR_13 {
 
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<Integer>();
@@ -13,7 +13,10 @@ public class EjercicioR_12 {
         list.add(1134);
         //Mostrar la lista
         System.out.println("Incial LinkedList: " + list);
-        System.out.println("El primer elemento removido es: " + list.removeFirst());
+        System.out.println("El ultimo elemento removido es: " + list.removeLast());
         System.out.println("Actualizada LinkedList: " + list);
-    }   
+        System.out.println("El ultimo elemento removido es: " + list.removeLast());
+        System.out.println("Actualizada LinkedList: " + list);
+    }
+    
 }
