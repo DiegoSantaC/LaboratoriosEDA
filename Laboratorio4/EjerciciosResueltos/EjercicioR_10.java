@@ -2,7 +2,7 @@
 package com.mycompany.Laboratorio4.EjerciciosResueltos;
 import java.util.*;
 
-public class EjercicioR10 {
+public class EjercicioR_10 {
 
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<Integer>();
