@@ -13,11 +13,18 @@ public class main {
         lista.addFirst(6);
         lista.printList();
         
-        lista.removeFirts();
         lista.removeLast();     
         lista.printList();
-        
-        lista.deleteByKey(4);
+        lista.removeLast();
         lista.printList();
+        lista.removeLast();
+        lista.printList();
+        
+        System.out.println("El tamanio de mi lista es: " + lista.size());
+        
+        lista.deleteAtPosition(1);
+        lista.printList();
+
+
     }   
 }

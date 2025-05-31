@@ -63,12 +63,48 @@ public class DoublyLinkedList<T> {
     }
 
     public void deleteAtPosition(int i) {
+        if (!isEmpty()) {
+            if (i < 0 || i >= count) {
+                System.out.println("Posición inválida.");
+            } else {
+                if (i == 0) {
+                    removeFirts();
+                } else if (i == count - 1) {
+                    removeLast();
+                } else {
+                    Node<T> aux;
+                    int index;
 
+                    if (i < count / 2) {
+                        aux = head;
+                        index = 0;
+                        while (index < i) {
+                            aux = aux.getNext();
+                            index++;
+                        }
+                    } else {
+                        aux = tail;
+                        index = count - 1;
+                        while (index > i) {
+                            aux = aux.getPrevius();
+                            index--;
+                        }
+                    }
+
+                    aux.getPrevius().setNext(aux.getNext());
+                    aux.getNext().setPrevius(aux.getPrevius());
+                    count--;
+                }
+            }
+        } else {
+            System.out.println("La lista está vacía, no se puede eliminar.");
+        }
     }
 
     public void removeFirts(){
         if (count == 1) {
             head=null;
+            tail=null;
             count --;
             }else if(!isEmpty()){
                 head=head.getNext();
@@ -80,9 +116,11 @@ public class DoublyLinkedList<T> {
     public void removeLast() {
         if (count == 1){ 
             head=null;
+            tail=null;
             count --;
         }else if (!isEmpty()){
-            tail.getPrevius().setNext(null);
+            tail = tail.getPrevius();
+            tail.setNext(null);
             count --;
             }else 
                 System.out.println("La lista esta vacia, no se puede eliminar el ultimo elemento");
