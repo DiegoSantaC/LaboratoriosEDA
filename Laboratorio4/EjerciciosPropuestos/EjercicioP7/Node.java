@@ -1,7 +1,5 @@
 package com.mycompany.Laboratorio4.EjerciciosPropuestos.EjercicioP7;
 
-import com.mycompany.Laboratorio4.EjerciciosPropuestos.EjercicioP2.*;
-
 public class Node<E> {
     private E data;
     private Node<E> next;

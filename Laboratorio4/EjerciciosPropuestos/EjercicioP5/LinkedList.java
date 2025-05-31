@@ -79,6 +79,7 @@ public class LinkedList<T>{
     public void removeFirts(){
         if (count == 1) {
             head=null;
+            count--;
             }else if(!isEmpty()){
                 head=head.getNext();
                 count--;
@@ -89,6 +90,7 @@ public class LinkedList<T>{
     public void removeLast() {
         if (count == 1){ 
             head=null;
+            count--;
         }else if (!isEmpty()){
             Node<T> aux = this.head;
             while (aux.getNext().getNext() != null)
