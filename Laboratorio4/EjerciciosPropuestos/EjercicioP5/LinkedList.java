@@ -39,13 +39,26 @@ public class LinkedList<T>{
             
         }
         
-        public void removeFirts() {
-		
+        public void removeFirts(){
+            if(!isEmpty()){
+                head=head.getNext();
+                count--;
+            } else
+                System.out.println("La lista esta vacia, no se puede eliminar el primer elemento");
 	}
         
         public void removeLast() {
-            
-        }
+            if (count == 1){ 
+                removeFirts();
+            }else if (!isEmpty()){
+                Node<T> aux = this.head;
+                while (aux.getNext().getNext() != null)
+                    aux = aux.getNext();
+                aux.setNext(null);
+                count --;
+                }else 
+                    System.out.println("La lista esta vacia, no se puede eliminar el ultimo elemento");
+                }    
         
 	public int size() {
             return this.count;

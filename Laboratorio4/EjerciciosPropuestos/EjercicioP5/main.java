@@ -10,7 +10,15 @@ public class main {
         list.addFirst("Tres");
         list.addLast("Cero");
         list.printList();
+        list.removeFirts();
+        list.printList();
+        list.removeLast();
+        list.printList();
+        list.removeLast();
+        list.printList();
+        list.removeLast();
+        list.printList();
+        list.removeLast();
         System.out.println("El tamaño de mi lista es: " + list.size());
-    }
-    
+    }    
 }
