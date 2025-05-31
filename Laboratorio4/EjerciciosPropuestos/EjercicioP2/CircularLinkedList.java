@@ -8,8 +8,23 @@ public class CircularLinkedList<T> {
     public boolean isEmpty() {
         return this.head == null;
     }
-	
-    public void insert(T x) {
+    
+    public void insertLeft(T x) {
+        Node<T> nuevoNodo = new Node<T>(x, this.head);
+        if (isEmpty()){
+            this.head = nuevoNodo;
+            this.head.setNext(head);
+        } else {
+            Node<T> aux = this.head;
+            while (aux.getNext() != head)
+                aux = aux.getNext();
+            this.head=nuevoNodo;
+            aux.setNext(head);
+        }
+        this.count ++;
+    }
+    
+    public void insertRight(T x) {
         Node<T> nuevoNodo = new Node<T>(x, this.head);
         if (isEmpty()){
             this.head = nuevoNodo;
