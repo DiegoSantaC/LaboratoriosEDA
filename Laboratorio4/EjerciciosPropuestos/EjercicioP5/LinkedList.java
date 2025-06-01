@@ -69,8 +69,8 @@ public class LinkedList<T>{
                         index++;
                     }
                     prev.setNext(aux.getNext());
-                }
-            } count --;
+                } count --;
+            } 
         } else {
             System.out.println("La lista está vacía, no se puede eliminar.");
         }

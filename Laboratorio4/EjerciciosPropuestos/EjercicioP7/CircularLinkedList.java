@@ -75,11 +75,12 @@ public class CircularLinkedList<T> {
     // METODO TRAIDO DEL EJERCICIO PROPUESTO 5 FALTA MODIFICAR
     public void deleteAtPosition(int i) {
         if (!isEmpty()) {
-            if (i < 0 || i >= count) {
+            if (i < 0) {
                 System.out.println("Posición inválida.");
             } else {
+                i = i%count;  //Para dar vueltas en mi lista circular
                 if (i == 0) {
-                    head=head.getNext();
+                    removeFirts();
                 } else {
                     Node<T> prev = head;
                     Node<T> aux = head.getNext();
@@ -90,10 +91,11 @@ public class CircularLinkedList<T> {
                         index++;
                     }
                     prev.setNext(aux.getNext());
-                }
-            } count --;
+                    count --;
+                } 
+            } 
         } else {
-            System.out.println("La lista está vacía, no se puede eliminar.");
+            System.out.println("La lista esta vacia, no se puede eliminar.");
         }
     }
 
@@ -134,6 +136,7 @@ public class CircularLinkedList<T> {
         System.out.println("Mi lista enlazada es: "+ toString());
     }
     
+    @Override
     public String toString() {
         String str = "";
         if(!isEmpty()){

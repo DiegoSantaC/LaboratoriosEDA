@@ -20,6 +20,17 @@ public class main {
         
         lista.deleteByKey(3);
         lista.printList();
+        
+        lista.deleteAtPosition(4);
+        lista.printList();
+        lista.deleteAtPosition(4);
+        lista.printList();
+        lista.deleteAtPosition(4);
+        lista.printList();
+        lista.deleteAtPosition(4);
+        lista.printList();
+        lista.deleteAtPosition(4);
+        lista.printList();
 
         System.out.println("El tamanio de mi lista circular es: " + lista.size());
         
