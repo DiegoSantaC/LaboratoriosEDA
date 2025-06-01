@@ -6,7 +6,6 @@ public class DoublyLinkedList<T> {
     Node<T> tail;
     int count;
     
-    
     public DoublyLinkedList() {
         this.head = null;
         this.tail=null;

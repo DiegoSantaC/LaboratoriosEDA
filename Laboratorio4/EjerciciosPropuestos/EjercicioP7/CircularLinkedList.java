@@ -38,7 +38,6 @@ public class CircularLinkedList<T> {
         this.count ++;
     }
     
-    // METODO TRAIDO DEL EJERCICIO PROPUESTO 5 FALTA MODIFICAR
     public void deleteByKey(T e) {
     if (!isEmpty()) {
         if (head.getData().equals(e)) {
@@ -70,9 +69,8 @@ public class CircularLinkedList<T> {
     } else {
         System.out.println("La lista está vacía");
     }
-}
+    }
     
-    // METODO TRAIDO DEL EJERCICIO PROPUESTO 5 FALTA MODIFICAR
     public void deleteAtPosition(int i) {
         if (!isEmpty()) {
             if (i < 0) {
