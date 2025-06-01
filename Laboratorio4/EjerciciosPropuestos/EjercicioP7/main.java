@@ -17,18 +17,12 @@ public class main {
         lista.removeFirts();
         lista.removeLast();
         lista.printList();
-        lista.removeFirts();
-        lista.removeLast();
+        
+        lista.deleteByKey(3);
         lista.printList();
-        lista.removeFirts();
-        lista.removeLast();
-        lista.printList();
+
         System.out.println("El tamanio de mi lista circular es: " + lista.size());
         
-        lista.removeLast();
-        lista.printList();
-        lista.removeLast();
-        System.out.println("El tamanio de mi lista circular es: " + lista.size());
     }
     
 }

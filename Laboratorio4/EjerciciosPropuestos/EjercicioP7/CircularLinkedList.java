@@ -39,25 +39,38 @@ public class CircularLinkedList<T> {
     }
     
     // METODO TRAIDO DEL EJERCICIO PROPUESTO 5 FALTA MODIFICAR
-    public void deleteByKey(T e){
-        if(!isEmpty()){
-            if(head.getData().equals(e)){
-                head=head.getNext();
-            }else{
-                Node<T> prev=head;
-                Node<T> aux=prev.getNext();
-                while (aux != null && !aux.getData().equals(e)){
-                    prev=aux;
-                    aux=aux.getNext();
+    public void deleteByKey(T e) {
+    if (!isEmpty()) {
+        if (head.getData().equals(e)) {
+            if (head.getNext() == head) {
+                head = null; 
+            } else {
+                Node<T> aux = head;
+                while (aux.getNext() != head) {
+                    aux = aux.getNext();
                 }
-                if(aux != null)
-                    prev.setNext(aux.getNext());
-                else
-                   System.out.println("No se encontro este elemento en la lista");
-            } count --;
-        } else 
-            System.out.println("La lista esta vacia");
+                head = head.getNext();
+                aux.setNext(head);
+            }
+            count--;
+        } else {
+            Node<T> prev = head;
+            Node<T> aux = head.getNext();
+            while (aux != head && !aux.getData().equals(e)) {
+                prev = aux;
+                aux = aux.getNext();
+            }
+            if (aux != head) {
+                prev.setNext(aux.getNext());
+                count--;
+            } else {
+                System.out.println("No se encontró este elemento en la lista");
+            }
+        }
+    } else {
+        System.out.println("La lista está vacía");
     }
+}
     
     // METODO TRAIDO DEL EJERCICIO PROPUESTO 5 FALTA MODIFICAR
     public void deleteAtPosition(int i) {
