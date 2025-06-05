@@ -43,8 +43,17 @@ public class StackLinkedList<E> implements Stack<E>{
                 throw new ExceptionIsEmpty("La Stack esta vacia...");
         }
         
-        public void destroyStack(){           
+        public void destroyStack() throws ExceptionIsEmpty{
+                if(!isEmpty()){                 
+                    while(tope!=null){
+                        Node<E> aux = this.tope;
+                        tope=tope.getNext();
+                        aux.setNext(null);
+                    }
+                } else 
+                    throw new ExceptionIsEmpty("La Stack ya estaba vacia...");
         }
+        
         public boolean isFull(){
             return false;
         }

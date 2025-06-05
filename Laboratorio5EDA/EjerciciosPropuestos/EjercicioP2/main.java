@@ -7,14 +7,13 @@ public class main {
         StackLinkedList<Integer> pila=new StackLinkedList<>();
         try{
             
-        for(int i=1 ; i<=2 ; i++)
+        for(int i=1 ; i<=10 ; i++)
             pila.push(i);
         pila.printList();
-        pila.pop();
-        pila.pop();
+        pila.destroyStack();
         pila.printList();
-        System.out.println("El tope de mi lista es: "+pila.top());
-        
+        pila.destroyStack();
+                
         }catch(ExceptionIsEmpty e){
             System.out.println(e.getMessage());
         }
