@@ -1,7 +1,7 @@
 
-package com.mycompany.Laboratorio5EDA.EjerciciosResueltos.EjercicioR1;
+package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP1;
 
-public class StackLinkedList<E> {
+public class StackLinkedList<E> implements Stack<E>{
     private Node<E> tope;
         private int count;
 
@@ -34,11 +34,20 @@ public class StackLinkedList<E> {
                 } else 
                     System.out.print("La pila esta vacia, no se puedes eliminar tope");
         }
-
-        public void printList(){
-        System.out.println("Mi lista stack es: "+ toString());
+      
+        public E top(){
+            return null;
         }
-
+        
+        public void destroyStack(){           
+        }
+        public boolean isFull(){
+            return false;
+        }
+        
+        public void printList(){
+        System.out.println("Mi PILA es: "+ toString());
+        }
         @Override
         public String toString() {
             String str = "";
