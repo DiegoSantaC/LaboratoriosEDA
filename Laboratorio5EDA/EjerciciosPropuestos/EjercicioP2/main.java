@@ -16,7 +16,7 @@ public class main {
         System.out.println("Mi pila esta llena?: "+pila.isFull());
                 
         }catch(ExceptionIsEmpty e){
-            System.out.println(e.getMessage());
+            System.out.println("Error: "+e.getMessage());
         }
     } 
 }
