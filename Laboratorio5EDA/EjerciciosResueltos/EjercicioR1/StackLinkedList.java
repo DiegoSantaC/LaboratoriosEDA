@@ -11,19 +11,10 @@ public class StackLinkedList<E> {
         }
 
         public void push(E x) {
-            if (isEmpty()) {
-                this.tope = new Node(x, this.tope);
-                this.count ++;
-            } else {
-                Node<E> aux = this.tope;
-                while (aux.getNext() != null)
-                        aux = aux.getNext();
-                if(!aux.getData().equals(x)) {
-                        aux.setNext(new Node(x));
-                        this.count ++;
-                }
-            }
+            this.tope = new Node(x, this.tope);
+            this.count ++;
         }
+        
         public void pop(){
             if (count == 1) {
                 tope=null;

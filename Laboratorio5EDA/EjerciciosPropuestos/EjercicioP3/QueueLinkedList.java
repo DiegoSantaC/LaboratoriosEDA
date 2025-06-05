@@ -11,7 +11,6 @@ public class QueueLinkedList<E> implements Queue<E>{
             this.ultimo=null;
             this.count=0;
         }
-        
         //Encolar
         public void enqueue(E x) {
             Node<E> nuevoNodo = new Node(x, null);
@@ -24,8 +23,7 @@ public class QueueLinkedList<E> implements Queue<E>{
                 this.ultimo=nuevoNodo;
             }
             this.count ++;
-        }
-        
+        }        
         //Desencolar
         public void dequeue(){
             if (count == 1) {
