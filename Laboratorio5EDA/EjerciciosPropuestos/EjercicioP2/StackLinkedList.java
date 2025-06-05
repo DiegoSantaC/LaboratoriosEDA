@@ -2,7 +2,7 @@
 package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP2;
 
 public class StackLinkedList<E> implements Stack<E>{
-    private Node<E> tope;
+        private Node<E> tope;
         private int count;
 
         public StackLinkedList(){
@@ -54,11 +54,14 @@ public class StackLinkedList<E> implements Stack<E>{
                     throw new ExceptionIsEmpty("La Stack ya estaba vacia...");
         }
         
+        //Como estamos implementando la stack como una lista enlazada casi siempre esta llena
         public boolean isFull(){
-            return false;
+            if(isEmpty())
+                return false;
+            return true;
         }
         
-        public void printList(){
+        public void printStack(){
         System.out.println("Mi PILA es: "+ toString());
         }
         @Override

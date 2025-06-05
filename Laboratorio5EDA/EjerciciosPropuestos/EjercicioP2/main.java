@@ -9,10 +9,11 @@ public class main {
             
         for(int i=1 ; i<=10 ; i++)
             pila.push(i);
-        pila.printList();
+        pila.printStack();
+        System.out.println("Mi pila esta llena?: "+pila.isFull());
         pila.destroyStack();
-        pila.printList();
-        pila.destroyStack();
+        pila.printStack();
+        System.out.println("Mi pila esta llena?: "+pila.isFull());
                 
         }catch(ExceptionIsEmpty e){
             System.out.println(e.getMessage());
