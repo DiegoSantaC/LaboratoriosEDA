@@ -8,4 +8,5 @@ public interface Stack<E> {
     void destroyStack() throws ExceptionIsEmpty;
     boolean isFull();
     boolean isEmpty ();
+    void printStack();
 }
