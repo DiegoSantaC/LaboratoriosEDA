@@ -32,17 +32,7 @@ public class StackLinkedList<E> implements Stack<E>{
                     tope=tope.getNext();
                     count--;
                 } else 
-                    System.out.print("La pila esta vacia, no se puedes eliminar tope");
-        }
-      
-        public E top(){
-            return null;
-        }
-        
-        public void destroyStack(){           
-        }
-        public boolean isFull(){
-            return false;
+                    System.out.print("La pila esta vacia, no se puede el eliminar tope");
         }
         
         public void printList(){

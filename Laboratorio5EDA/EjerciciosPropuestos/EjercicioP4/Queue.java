@@ -1,5 +1,5 @@
 
-package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP3;
+package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP4;
 
 public interface Queue <E>{
     void enqueue(E x);

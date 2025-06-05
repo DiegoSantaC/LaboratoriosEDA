@@ -27,7 +27,7 @@ public class QueueLinkedList<E> implements Queue<E>{
         }
         
         //Desencolar
-        public void dequeue() throws ExceptionIsEmpty{
+        public void dequeue(){
             if (count == 1) {
                 primero=null;
                 ultimo=null;
@@ -36,38 +36,8 @@ public class QueueLinkedList<E> implements Queue<E>{
                     primero=primero.getNext();
                     count--;
                 } else 
-                    throw new ExceptionIsEmpty("La Stack esta vacia...");
-        }
-        
-        public void destroyQueue() throws ExceptionIsEmpty{
-            if(!isEmpty()){                 
-                while(primero!=null){
-                    Node<E> aux = this.primero;
-                    primero=primero.getNext();
-                    aux.setNext(null);
-                }
-            } else 
-                throw new ExceptionIsEmpty("La Stack ya estaba vacia...");
-        }
-        
-        public E back() throws ExceptionIsEmpty{
-            if(ultimo!=null)
-                return ultimo.getData();
-            else
-                throw new ExceptionIsEmpty("La Stack esta vacia...");
-        }
-        public E front() throws ExceptionIsEmpty{
-            if(primero!=null)
-                return primero.getData();
-            else
-                throw new ExceptionIsEmpty("La Stack esta vacia...");
-        }
-
-        public boolean isFull(){
-            if(isEmpty())
-                return false;
-            return true;
-        }
+                    System.out.print("La cola esta vacia, no se puede desencolar al ultimo");
+        }     
         
         public boolean isEmpty(){
             return primero==null;
