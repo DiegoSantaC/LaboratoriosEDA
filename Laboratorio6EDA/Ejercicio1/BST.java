@@ -21,7 +21,7 @@ public class BST<E extends Comparable<E>> {
     public Node<E> insertRecursivo(E x, Node<E> actual) throws ItemDuplicated{
         Node<E> res=actual;
         if(actual==null)
-            res=new Node<E>(x);
+            res=new Node<>(x);
         else{
             int valor=x.compareTo(actual.getData());
             if(valor<0)
@@ -34,6 +34,42 @@ public class BST<E extends Comparable<E>> {
         return res;
     }
     
+    public void remove(E x) throws ItemNotFound{
+        if(isEmpty())
+            throw new ItemNotFound("El arbol esta vacio, no se puede eliminar elementos");
+        else
+            this.root = removeRecursivo(x, root);
+    }
+    
+    public Node<E> removeRecursivo(E x, Node<E> actual) throws ItemNotFound{
+        Node<E> res=actual;
+        if(actual==null)
+            throw new ItemNotFound(x + ", no se encontro en el arbol");
+        else{
+            int valor=x.compareTo(actual.getData());
+            if(valor<0)
+                actual.setLeft(removeRecursivo(x, actual.getLeft()));
+            else if(valor>0)
+                actual.setRight(removeRecursivo(x, actual.getRight()));
+            else{
+                if(actual.getLeft()!=null && actual.getRight()!= null){
+                    actual.setData(sucesor(actual));
+                    actual.setLeft(minRemove(actual.getLeft()));
+                } else 
+                    res= (actual.getLeft()!=null) ? actual.getLeft() : actual.getRight();
+            }               
+        } return res;
+    }
+    
+    private Node<E> minRemove(Node<E> actual){
+        Node<E> res=actual;
+        if(actual.getLeft() == null)
+            res=null;
+        else
+            actual.setLeft(minRemove(actual.getLeft()));
+        return res;
+    }
+       
     public void inOrden(){
         if(isEmpty())
             System.out.print("Mi BST esta vacio...");
@@ -116,6 +152,10 @@ public class BST<E extends Comparable<E>> {
     
     public E predecesor(){
         return max(root.getLeft()).getData();
+    }
+    
+    public E sucesor(Node<E> node){
+        return min(node.getRight()).getData();
     }
 
 }

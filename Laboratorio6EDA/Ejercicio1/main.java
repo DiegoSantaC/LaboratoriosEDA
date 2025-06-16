@@ -22,7 +22,12 @@ public class main {
         System.out.println("Mi valor maximo es: "+tree.max());
         System.out.println("El sucesor de mi raiz es: "+tree.sucesor());
         System.out.println("El predecesor de mi raiz es: "+tree.predecesor());
-        } catch(ItemDuplicated e){
+        tree.remove(22);
+        tree.remove(1);
+        tree.inOrden(); 
+        System.out.println("Mi valor minimo es: "+tree.min());
+        System.out.println("Mi valor maximo es: "+tree.max());
+        } catch(Exception e){
             System.out.println(e.getMessage());
         }
         
