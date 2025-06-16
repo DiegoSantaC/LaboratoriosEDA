@@ -33,4 +33,26 @@ public class BST<E extends Comparable<E>> {
         }
         return res;
     }
+    
+    public void inOrden(){
+        if(isEmpty())
+            System.out.print("Mi BST esta vacio...");
+        else
+            System.out.println("Inorden: "+inOrden(root));
+    }
+    
+    private String inOrden(Node<E> actual){
+        String str="";
+        if(actual.getLeft()!=null)
+            str+=inOrden(actual.getLeft());
+        str+=actual.getData()+ " ";
+        if(actual.getRight()!=null)
+            str+=inOrden(actual.getRight());
+        return str;
+    }
+    
+    
+    public boolean isEmpty(){
+        return root==null;
+    }
 }
