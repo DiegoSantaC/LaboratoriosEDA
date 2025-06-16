@@ -28,6 +28,10 @@ public class main {
         System.out.println("Mi valor minimo es: "+tree.min());
         System.out.println("Mi valor maximo es: "+tree.max());
         System.out.println("15? :" + tree.search(15));
+        tree.destroy();
+        tree.inOrden();
+        tree.insert(1);
+        tree.inOrden();
         } catch(Exception e){
             System.out.println(e.getMessage());
         }

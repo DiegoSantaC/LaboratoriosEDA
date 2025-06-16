@@ -35,7 +35,7 @@ public class BST<E extends Comparable<E>> {
     
     public void remove(E x) throws ItemNotFound{
         if(isEmpty())
-            throw new ItemNotFound("El arbol esta vacio, no se puede eliminar elementos");
+            System.out.println("Mi BST esta vacio...");
         else
             this.root = removeRecursivo(x, root);
     }
@@ -90,7 +90,7 @@ public class BST<E extends Comparable<E>> {
        
     public void inOrden(){
         if(isEmpty())
-            System.out.print("Mi BST esta vacio...");
+            System.out.println("Mi BST esta vacio...");
         else
             System.out.println("Inorden: "+inOrden(root));
     }
@@ -107,7 +107,7 @@ public class BST<E extends Comparable<E>> {
     
     public void preOrden(){
         if(isEmpty())
-            System.out.print("Mi BST esta vacio...");
+            System.out.println("Mi BST esta vacio...");
         else
             System.out.println("Preorden: "+preOrden(root));
     }
@@ -124,7 +124,7 @@ public class BST<E extends Comparable<E>> {
     
     public void postOrden(){
         if(isEmpty())
-            System.out.print("Mi BST esta vacio...");
+            System.out.println("Mi BST esta vacio...");
         else
             System.out.println("Postorden: "+postOrden(root));
     }
@@ -175,5 +175,20 @@ public class BST<E extends Comparable<E>> {
     public E sucesor(Node<E> node){
         return min(node.getRight()).getData();
     }
-
+    
+    public void destroy(){
+        if(isEmpty())
+            System.out.println("El arbol ya se encuentra vacio");
+        else
+            this.root = destroy(root);
+    }
+    
+    private Node<E> destroy(Node<E> node){
+        if(node.getLeft()!=null)
+            node.setLeft(destroy(node.getLeft()));
+        if(node.getRight()!=null)
+            node.setRight(destroy(node.getRight()));
+        node=null;
+        return node;
+    }
 }
