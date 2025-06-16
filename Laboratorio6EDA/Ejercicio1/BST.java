@@ -109,4 +109,13 @@ public class BST<E extends Comparable<E>> {
         else
             return max(actual.getRight());
     }
+    
+    public E sucesor(){
+        return min(root.getRight()).getData();
+    }
+    
+    public E predecesor(){
+        return max(root.getLeft()).getData();
+    }
+
 }
