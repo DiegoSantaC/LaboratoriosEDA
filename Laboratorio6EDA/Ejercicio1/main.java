@@ -27,6 +27,7 @@ public class main {
         tree.inOrden(); 
         System.out.println("Mi valor minimo es: "+tree.min());
         System.out.println("Mi valor maximo es: "+tree.max());
+        System.out.println("15? :" + tree.search(15));
         } catch(Exception e){
             System.out.println(e.getMessage());
         }

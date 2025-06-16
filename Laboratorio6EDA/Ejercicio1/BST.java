@@ -19,9 +19,8 @@ public class BST<E extends Comparable<E>> {
     }
     
     public Node<E> insertRecursivo(E x, Node<E> actual) throws ItemDuplicated{
-        Node<E> res=actual;
         if(actual==null)
-            res=new Node<>(x);
+            return new Node<>(x);
         else{
             int valor=x.compareTo(actual.getData());
             if(valor<0)
@@ -31,7 +30,7 @@ public class BST<E extends Comparable<E>> {
             else
                 actual.setRight(insertRecursivo(x, actual.getRight()));               
         }
-        return res;
+        return actual;
     }
     
     public void remove(E x) throws ItemNotFound{
@@ -42,7 +41,6 @@ public class BST<E extends Comparable<E>> {
     }
     
     public Node<E> removeRecursivo(E x, Node<E> actual) throws ItemNotFound{
-        Node<E> res=actual;
         if(actual==null)
             throw new ItemNotFound(x + ", no se encontro en el arbol");
         else{
@@ -54,20 +52,40 @@ public class BST<E extends Comparable<E>> {
             else{
                 if(actual.getLeft()!=null && actual.getRight()!= null){
                     actual.setData(sucesor(actual));
-                    actual.setLeft(minRemove(actual.getLeft()));
+                    actual.setRight(minRemove(actual.getRight()));
                 } else 
-                    res= (actual.getLeft()!=null) ? actual.getLeft() : actual.getRight();
+                    actual= (actual.getLeft()!=null) ? actual.getLeft() : actual.getRight();
             }               
-        } return res;
+        } return actual;
     }
     
     private Node<E> minRemove(Node<E> actual){
-        Node<E> res=actual;
         if(actual.getLeft() == null)
-            res=null;
+            actual=actual.getRight();
         else
             actual.setLeft(minRemove(actual.getLeft()));
-        return res;
+        return actual;
+    }
+    
+    public E search(E x) throws ItemNotFound {
+        if(isEmpty())
+            throw new ItemNotFound(x + ", no se encuentra en el arbol");
+        else
+            return searchRecursivo(x, root).getData();
+    }
+    
+    public Node<E> searchRecursivo(E x, Node<E> actual) throws ItemNotFound {
+        if(actual==null)
+            throw new ItemNotFound(x + ", no se encuentra en el arbol");
+        else{
+            int valor = x.compareTo(actual.getData());
+            if(valor < 0)
+                return searchRecursivo(x, actual.getLeft());
+            else if(valor > 0)
+                return searchRecursivo(x, actual.getRight());
+            else
+                return actual;
+        }
     }
        
     public void inOrden(){
