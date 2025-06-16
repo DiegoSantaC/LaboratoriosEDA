@@ -84,9 +84,29 @@ public class BST<E extends Comparable<E>> {
         str+=actual.getData()+ " ";
         return str;
     }
-    
-    
+   
     public boolean isEmpty(){
         return root==null;
+    }
+    
+    public E min(){
+        return min(root).getData();
+    }
+    
+    private Node<E> min(Node<E> actual){
+        if(actual.getLeft()==null)
+            return actual;
+        else
+            return min(actual.getLeft());
+    }
+    public E max(){
+        return max(root).getData();
+    }
+    
+    private Node<E> max(Node<E> actual){
+        if(actual.getRight()==null)
+            return actual;
+        else
+            return max(actual.getRight());
     }
 }

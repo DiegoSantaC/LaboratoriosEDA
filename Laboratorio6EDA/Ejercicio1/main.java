@@ -13,9 +13,13 @@ public class main {
         tree.insert(19);
         tree.insert(1);
         tree.insert(15);
-        tree.inOrden();
+        tree.insert(2);
+        tree.insert(22);
+        tree.inOrden(); 
         tree.preOrden();
         tree.postOrden();
+        System.out.println("Mi valor minimo es: "+tree.min());
+        System.out.println("Mi valor maximo es: "+tree.max());
         } catch(ItemDuplicated e){
             System.out.println(e.getMessage());
         }
