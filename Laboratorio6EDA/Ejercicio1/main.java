@@ -14,6 +14,8 @@ public class main {
         tree.insert(1);
         tree.insert(15);
         tree.inOrden();
+        tree.preOrden();
+        tree.postOrden();
         } catch(ItemDuplicated e){
             System.out.println(e.getMessage());
         }
