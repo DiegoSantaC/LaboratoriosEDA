@@ -1,5 +1,5 @@
 
-package com.mycompany.laboratorio3eda.Ejercicio2;
+package Laboratorio3EDA.Ejercicio2;
 
 public class Operador<T extends Number> {
     private T valor1;

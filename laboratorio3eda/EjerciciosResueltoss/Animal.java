@@ -1,5 +1,5 @@
 
-package com.mycompany.laboratorio3eda.EjerciciosResueltoss;
+package Laboratorio3EDA.EjerciciosResueltoss;
 
 public class Animal {
     String nombre;

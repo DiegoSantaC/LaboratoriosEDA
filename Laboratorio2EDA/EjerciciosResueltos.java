@@ -1,6 +1,4 @@
-
-package com.mycompany.Laboratorio2EDA;
-
+package Laboratorio2EDA;
 
 public class EjerciciosResueltos {
     static class Recursividad1 {
@@ -56,7 +54,7 @@ public class EjerciciosResueltos {
         }
         void imprimir(int[] vec) {
             for (int f = 0; f < vec.length; f++)
-            System.out.print(vec[f] + " ");
+                System.out.print(vec[f] + " ");
             System.out.println("\n");
         }
     }    

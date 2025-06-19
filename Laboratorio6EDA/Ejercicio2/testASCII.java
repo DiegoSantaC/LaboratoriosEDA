@@ -1,6 +1,6 @@
 
-package com.mycompany.Laboratorio6EDA.Ejercicio2;
-import com.mycompany.Laboratorio6EDA.Ejercicio1.BST;
+package Laboratorio6EDA.Ejercicio2;
+import Laboratorio6EDA.Ejercicio1.BST;
 import java.util.*;
 
 public class testASCII {

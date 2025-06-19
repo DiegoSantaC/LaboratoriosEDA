@@ -1,5 +1,5 @@
 
-package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP1;
+package Laboratorio5EDA.EjerciciosPropuestos.EjercicioP1;
 
 public class main {
 

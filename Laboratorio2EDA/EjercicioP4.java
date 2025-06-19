@@ -1,5 +1,4 @@
-
-package com.mycompany.Laboratorio2EDA;
+package Laboratorio2EDA;
 
 public class EjercicioP4 {
     public static void main(String[] ar) {

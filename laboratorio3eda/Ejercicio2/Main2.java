@@ -1,5 +1,5 @@
 
-package com.mycompany.laboratorio3eda.Ejercicio2;
+package Laboratorio3EDA.Ejercicio2;
 import java.util.*;
 public class Main2 {
     

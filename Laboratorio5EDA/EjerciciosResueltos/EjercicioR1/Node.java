@@ -1,4 +1,4 @@
-package com.mycompany.Laboratorio5EDA.EjerciciosResueltos.EjercicioR1;
+package Laboratorio5EDA.EjerciciosResueltos.EjercicioR1;
 
 public class Node<E> {
     private E data;

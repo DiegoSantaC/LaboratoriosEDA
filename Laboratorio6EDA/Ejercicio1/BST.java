@@ -1,5 +1,5 @@
 
-package com.mycompany.Laboratorio6EDA.Ejercicio1;
+package Laboratorio6EDA.Ejercicio1;
 
 public class BST<E extends Comparable<E>> {
     protected Node<E> root;

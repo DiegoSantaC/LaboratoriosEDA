@@ -1,5 +1,4 @@
-
-package com.mycompany.laboratorio3eda.Ejercicio1;
+package Laboratorio3EDA.Ejercicio1;
 
 public class Node<T> {
     T data;
@@ -31,6 +30,6 @@ public class Node<T> {
 
     @Override
     public String toString() {
-        return "" + data;
+        return "" + data.toString();
     }    
 }

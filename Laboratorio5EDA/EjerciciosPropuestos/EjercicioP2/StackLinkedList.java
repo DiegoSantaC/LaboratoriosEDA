@@ -1,5 +1,5 @@
 
-package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP2;
+package Laboratorio5EDA.EjerciciosPropuestos.EjercicioP2;
 
 public class StackLinkedList<E> implements Stack<E>{
         private Node<E> tope;
@@ -27,10 +27,9 @@ public class StackLinkedList<E> implements Stack<E>{
         }
       
         public E top() throws ExceptionIsEmpty{
-            if(!isEmpty()){
-                E data=tope.getData();
-                return data;
-            }else 
+            if(!isEmpty())
+                return tope.getData();
+            else 
                 throw new ExceptionIsEmpty("La Stack esta vacia...");
         }
         

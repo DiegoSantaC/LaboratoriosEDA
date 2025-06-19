@@ -1,5 +1,5 @@
+package Laboratorio1EDA;
 
-package com.mycompany.Laboratorio1EDA;
 import java.util.*;
 
 public class EjerciciosResueltos {

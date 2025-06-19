@@ -1,5 +1,4 @@
-
-package com.mycompany.laboratorio3eda.Ejercicio1;
+package Laboratorio3EDA.Ejercicio1;
 
 public class Lista<T> {
     Node<T> root;

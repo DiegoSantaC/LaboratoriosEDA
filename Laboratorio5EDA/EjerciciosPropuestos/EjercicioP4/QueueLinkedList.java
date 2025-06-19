@@ -1,5 +1,5 @@
 
-package com.mycompany.Laboratorio5EDA.EjerciciosPropuestos.EjercicioP4;
+package Laboratorio5EDA.EjerciciosPropuestos.EjercicioP4;
 
 public class QueueLinkedList<E> implements Queue<E>{
     private Node<E> primero;
@@ -10,8 +10,7 @@ public class QueueLinkedList<E> implements Queue<E>{
             this.primero=null;
             this.ultimo=null;
             this.count=0;
-        }
-        
+        }   
         //Encolar
         public void enqueue(E x) {
             Node<E> nuevoNodo = new Node(x, null);
@@ -24,8 +23,7 @@ public class QueueLinkedList<E> implements Queue<E>{
                 this.ultimo=nuevoNodo;
             }
             this.count ++;
-        }
-        
+        }    
         //Desencolar
         public void dequeue() throws ExceptionIsEmpty{
             if (count == 1) {
@@ -67,11 +65,11 @@ public class QueueLinkedList<E> implements Queue<E>{
             if(isEmpty())
                 return false;
             return true;
-        }
+        }    
         
         public boolean isEmpty(){
             return primero==null;
-        }
+        }  
         
         public void printQueue(){
             System.out.println("Mi cola es: "+ toString());
