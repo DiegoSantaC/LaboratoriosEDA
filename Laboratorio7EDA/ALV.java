@@ -40,7 +40,7 @@ public class ALV<E extends Comparable<E>> {
         count++;
     }
     
-    protected NodeAVL<E> insertarRecursivo(E x, NodeAVL<E> actual) throws ItemDuplicated{
+    private NodeAVL<E> insertarRecursivo(E x, NodeAVL<E> actual) throws ItemDuplicated{
         NodeAVL<E> res=actual;
         if(actual==null)
             res = new NodeAVL<>(x);
@@ -56,6 +56,57 @@ public class ALV<E extends Comparable<E>> {
             res=balancear(actual);               
         }
         return res;
+    }
+    
+    public void remove(E x) throws ItemNotFound{
+        NodeAVL<E> nuevaRoot= (NodeAVL<E>) root;
+        this.root= removeRecursivo(x, nuevaRoot);
+        count--;
+    }
+    
+    private NodeAVL<E> removeRecursivo(E x, NodeAVL<E> actual) throws ItemNotFound{
+        NodeAVL<E> res=actual;
+        if(actual==null)
+            throw new ItemNotFound(x + " ,No se encuentra en el arbol...");
+        else{
+            int valor=x.compareTo(actual.getData());
+            if(valor<0)
+                actual.setLeft(removeRecursivo(x, actual.getLeft()));
+            else if(valor>0)
+                actual.setRight(removeRecursivo(x, actual.getRight()));
+            else{
+                if(actual.getLeft()!=null && actual.getRight()!=null){  //2 Hijos
+                    NodeAVL<E> sucesor = (NodeAVL<E>) sucesor(actual);      
+                    actual.setData(sucesor.getData());                 
+                    actual.setRight(minRemove(actual.getRight()));
+                } else {
+                    res = (actual.getLeft() != null) ? actual.getLeft() : actual.getRight();
+                    return res;
+                }  
+            }   
+            res=balancear(actual);           
+        } return res;
+    }
+    
+    public NodeAVL<E> minRemove(NodeAVL<E> node){
+        if(node.getLeft()==null)
+            return node.getRight();
+        else{
+            node.setLeft(minRemove(node.getLeft()));      
+            node=balancear(node); 
+        }    
+        return node;
+    }
+    
+    public NodeAVL<E> sucesor(NodeAVL<E> node){
+        return minRecover(node.getRight());
+    }
+    
+    private NodeAVL<E> minRecover(NodeAVL<E> node){
+        if(node.getLeft()==null)
+            return node;
+        else
+            return minRecover(node.getLeft());
     }
     
     public int calcularFE(NodeAVL<E> node){
