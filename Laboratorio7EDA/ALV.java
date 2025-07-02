@@ -144,6 +144,25 @@ public class ALV<E extends Comparable<E>> {
         return min(node.getRight());
     }
     
+    public NodeAVL<E> predecesor(NodeAVL<E> node){
+        return max(root.getLeft());
+    }
+    
+    public void destroy(){
+        if(isEmpty())
+            System.out.println("El arbol ya se encuentra vacio");
+        else
+            this.root = destroy(root);
+    }
+    
+    private NodeAVL<E> destroy(NodeAVL<E> node){
+        if(node.getLeft()!=null)
+            node.setLeft(destroy(node.getLeft()));
+        if(node.getRight()!=null)
+            node.setRight(destroy(node.getRight()));
+        node=null;
+        return node;
+    }
     
     public int calcularFE(NodeAVL<E> node){
         return altura(node.getRight())- altura(node.getLeft());
