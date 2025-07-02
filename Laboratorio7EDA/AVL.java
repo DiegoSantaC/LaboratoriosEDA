@@ -1,15 +1,15 @@
 
 package Laboratorio7EDA;
 
-public class ALV<E extends Comparable<E>> {
-    private NodeAVL<E> root;
+public class AVL<E extends Comparable<E>> {
+    public NodeAVL<E> root;
     private int count;
     
-    public ALV(){
+    public AVL(){
         this.root = null;
         count=0;
     }
-    public ALV(NodeAVL<E> root){
+    public AVL(NodeAVL<E> root){
         this.root = root;
         count=1;
     }
