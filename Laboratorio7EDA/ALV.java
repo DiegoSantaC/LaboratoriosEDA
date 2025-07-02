@@ -231,4 +231,55 @@ public class ALV<E extends Comparable<E>> {
         return rotacionSimpleIzquierda(node);  
     }
     
+    
+    public void inOrden(){
+        if(isEmpty())
+            System.out.println("Mi BST esta vacio...");
+        else
+            System.out.println("Inorden: "+inOrden(root));
+    }
+    
+    private String inOrden(NodeAVL<E> actual){
+        String str="";
+        if(actual.getLeft()!=null)
+            str+=inOrden(actual.getLeft());
+        str+=actual.getData()+ " ";
+        if(actual.getRight()!=null)
+            str+=inOrden(actual.getRight());
+        return str;
+    }
+    
+    public void preOrden(){
+        if(isEmpty())
+            System.out.println("Mi BST esta vacio...");
+        else
+            System.out.println("Preorden: "+preOrden(root));
+    }
+    
+    private String preOrden(NodeAVL<E> actual){
+        String str="";
+        str+=actual.getData()+ " ";
+        if(actual.getLeft()!=null)
+            str+=preOrden(actual.getLeft());
+        if(actual.getRight()!=null)
+            str+=preOrden(actual.getRight());
+        return str;
+    }
+    
+    public void postOrden(){
+        if(isEmpty())
+            System.out.println("Mi BST esta vacio...");
+        else
+            System.out.println("Postorden: "+postOrden(root));
+    }
+    
+    private String postOrden(NodeAVL<E> actual){
+        String str="";
+        if(actual.getLeft()!=null)
+            str+=postOrden(actual.getLeft());
+        if(actual.getRight()!=null)
+            str+=postOrden(actual.getRight());
+        str+=actual.getData()+ " ";
+        return str;
+    }
 }
