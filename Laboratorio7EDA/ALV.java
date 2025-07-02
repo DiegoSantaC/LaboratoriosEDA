@@ -34,6 +34,30 @@ public class ALV<E extends Comparable<E>> {
             return 0;
     }
     
+    public void insert(E x) throws ItemDuplicated{
+        NodeAVL<E> nuevaRoot= (NodeAVL<E>) root;
+        this.root = insertarRecursivo(x, nuevaRoot);
+        count++;
+    }
+    
+    protected NodeAVL<E> insertarRecursivo(E x, NodeAVL<E> actual) throws ItemDuplicated{
+        NodeAVL<E> res=actual;
+        if(actual==null)
+            res = new NodeAVL<>(x);
+        else{
+            int valor= actual.getData().compareTo(x);
+            if(valor<0)
+                actual.setRight(insertarRecursivo(x, actual.getRight()));           
+            else if(valor==0)
+                throw new ItemDuplicated(x + " ya se encuentra en el arbol");
+            else    
+                actual.setLeft(insertarRecursivo(x, actual.getLeft()));
+            
+            res=balancear(actual);               
+        }
+        return res;
+    }
+    
     public int calcularFE(NodeAVL<E> node){
         return altura(node.getRight())- altura(node.getLeft());
     }
