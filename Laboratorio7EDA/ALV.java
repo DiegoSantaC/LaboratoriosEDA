@@ -119,16 +119,31 @@ public class ALV<E extends Comparable<E>> {
         return node;
     }
     
-    public NodeAVL<E> sucesor(NodeAVL<E> node){
-        return minRecover(node.getRight());
+    public E min(){
+        return min(root).getData();
     }
     
-    private NodeAVL<E> minRecover(NodeAVL<E> node){
-        if(node.getLeft()==null)
-            return node;
+    private NodeAVL<E> min(NodeAVL<E> actual){
+        if(actual.getLeft()==null)
+            return actual;
         else
-            return minRecover(node.getLeft());
+            return min(actual.getLeft());
     }
+    public E max(){
+        return max(root).getData();
+    }
+    
+    private NodeAVL<E> max(NodeAVL<E> actual){
+        if(actual.getRight()==null)
+            return actual;
+        else
+            return max(actual.getRight());
+    }
+    
+    public NodeAVL<E> sucesor(NodeAVL<E> node){
+        return min(node.getRight());
+    }
+    
     
     public int calcularFE(NodeAVL<E> node){
         return altura(node.getRight())- altura(node.getLeft());
