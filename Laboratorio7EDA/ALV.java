@@ -34,4 +34,67 @@ public class ALV<E extends Comparable<E>> {
             return 0;
     }
     
+    public int calcularFE(NodeAVL<E> node){
+        return altura(node.getRight())- altura(node.getLeft());
+    }
+    
+    
+    public NodeAVL<E> balancear(NodeAVL<E> node){
+        int FE=calcularFE(node);
+            if(FE >= 2){
+                if(node.getRight().getFE() >= 0){
+                    return rotacionSimpleIzquierda(node);
+                } else {
+                    return rotacionDobleIzquierda(node);
+                }
+            } else if(FE <=-2){
+                if(node.getLeft().getFE() <= 0){
+                    return rotacionSimpleDerecha(node);
+                } else {
+                    return rotacionDobleDerecha(node);
+                }
+            } else node.setFE(FE); 
+        return node;
+    }
+    
+    private NodeAVL<E> rotacionSimpleDerecha(NodeAVL<E> node){
+        NodeAVL<E> ref=node.getLeft();
+        
+        node.setLeft(ref.getRight());
+        ref.setRight(node);
+        node=ref;
+        
+        node.setFE(calcularFE(node));
+        ref.setFE(calcularFE(ref));
+        
+        return node;                    
+    }
+    
+    private NodeAVL<E> rotacionSimpleIzquierda(NodeAVL<E> node){
+        NodeAVL<E> ref=node.getRight();
+        
+        node.setRight(ref.getLeft());
+        ref.setLeft(node);
+        node=ref;
+        
+        node.setFE(calcularFE(node));
+        ref.setFE(calcularFE(ref));
+        
+        return node;                    
+    }
+    
+    private NodeAVL<E> rotacionDobleDerecha(NodeAVL<E> node){
+        NodeAVL<E> nuevoIzquierdo= rotacionSimpleIzquierda(node.getLeft());
+        node.setLeft(nuevoIzquierdo);
+        
+        return rotacionSimpleDerecha(node);
+    }
+    
+    private NodeAVL<E> rotacionDobleIzquierda(NodeAVL<E> node){
+        NodeAVL<E> nuevoDerecho= rotacionSimpleDerecha(node.getRight());
+        node.setRight(nuevoDerecho);
+        
+        return rotacionSimpleIzquierda(node);  
+    }
+    
 }
