@@ -95,7 +95,7 @@ public class AVL<E extends Comparable<E>> {
             return searchRecursivo(x, root).getData();
     }
     
-    public NodeAVL<E> searchRecursivo(E x, NodeAVL<E> actual) throws ItemNotFound {
+    private NodeAVL<E> searchRecursivo(E x, NodeAVL<E> actual) throws ItemNotFound {
         if(actual==null)
             throw new ItemNotFound(x + ", no se encuentra en el arbol");
         else{
@@ -109,7 +109,7 @@ public class AVL<E extends Comparable<E>> {
         }
     }
     
-    public NodeAVL<E> minRemove(NodeAVL<E> node){
+    private NodeAVL<E> minRemove(NodeAVL<E> node){
         if(node.getLeft()==null)
             return node.getRight();
         else{
@@ -164,7 +164,7 @@ public class AVL<E extends Comparable<E>> {
         return node;
     }
     
-    public int calcularFE(NodeAVL<E> node){
+    private int calcularFE(NodeAVL<E> node){
         return altura(node.getRight())- altura(node.getLeft());
     }
     
@@ -172,8 +172,7 @@ public class AVL<E extends Comparable<E>> {
         return root==null;
     }
     
-    
-    public NodeAVL<E> balancear(NodeAVL<E> node){
+    private NodeAVL<E> balancear(NodeAVL<E> node){
         int FE=calcularFE(node);
             if(FE >= 2){
                 if(node.getRight().getFE() >= 0){
