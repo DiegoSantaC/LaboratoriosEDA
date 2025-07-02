@@ -88,6 +88,27 @@ public class ALV<E extends Comparable<E>> {
         } return res;
     }
     
+    public E search(E x) throws ItemNotFound {
+        if(isEmpty())
+            throw new ItemNotFound(x + ", no se encuentra en el arbol");
+        else
+            return searchRecursivo(x, root).getData();
+    }
+    
+    public NodeAVL<E> searchRecursivo(E x, NodeAVL<E> actual) throws ItemNotFound {
+        if(actual==null)
+            throw new ItemNotFound(x + ", no se encuentra en el arbol");
+        else{
+            int valor = x.compareTo(actual.getData());
+            if(valor < 0)
+                return searchRecursivo(x, actual.getLeft());
+            else if(valor > 0)
+                return searchRecursivo(x, actual.getRight());
+            else
+                return actual;
+        }
+    }
+    
     public NodeAVL<E> minRemove(NodeAVL<E> node){
         if(node.getLeft()==null)
             return node.getRight();
@@ -111,6 +132,10 @@ public class ALV<E extends Comparable<E>> {
     
     public int calcularFE(NodeAVL<E> node){
         return altura(node.getRight())- altura(node.getLeft());
+    }
+    
+    public boolean isEmpty(){
+        return root==null;
     }
     
     
