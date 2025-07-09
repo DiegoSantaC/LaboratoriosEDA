@@ -9,15 +9,23 @@ public class BTree<E extends Comparable<E>> {
     private BNode<E> nDes;
 
     public BTree(int orden) {
-        this.orden = orden;
         this.root = null;
+        this.orden = orden;
     }
 
-    public void insert(E clave) {
+    public boolean isEmpty() {
+        return this.root == null;
+    }
+
+    public void insert(E cl) {
         up = false;
-        E mediana = push(root, clave);
+        E mediana;
+        BNode<E> nuevaRaiz;
+
+        mediana = push(null, root, cl);
+
         if (up) {
-            BNode<E> nuevaRaiz = new BNode<>(orden, false);
+            nuevaRaiz = new BNode<>(orden, false);
             nuevaRaiz.claves.set(0, mediana);
             nuevaRaiz.hijos.set(0, root);
             nuevaRaiz.hijos.set(1, nDes);
@@ -25,28 +33,33 @@ public class BTree<E extends Comparable<E>> {
         }
     }
 
-    private E push(BNode<E> nodo, E clave) {
-        if (nodo == null) {
+    public BNode<E> insertRecursivo(BNode<E> padre, BNode<E> actual, E clave) {
+        return actual == null ? null : push(padre, actual, clave) != null ? actual : null;
+    }
+
+    private E push(BNode<E> padre, BNode<E> actual, E clave) {
+        int[] pos = new int[1];
+
+        if (actual == null) {
             up = true;
             nDes = null;
             return clave;
         }
 
-        int[] pos = new int[1];
-        boolean encontrado = nodo.searchNode(clave, pos);
-        if (encontrado) {
+        boolean existe = actual.searchNode(clave, pos);
+        if (existe) {
             up = false;
             return null;
         }
 
-        E mediana = push(nodo.hijos.get(pos[0]), clave);
+        E mediana = push(actual, actual.hijos.get(pos[0]), clave);
 
         if (up) {
-            if (!nodo.nodeFull(orden)) {
-                insertarEnNodo(nodo, mediana, nDes, pos[0]);
-                up = false;
+            if (actual.nodeFull(orden)) {
+                mediana = dividirNodo(actual, mediana, pos[0]);
             } else {
-                mediana = dividirNodo(nodo, mediana, nDes, pos[0]);
+                insertarEnNodo(actual, mediana, nDes, pos[0]);
+                up = false;
             }
             return mediana;
         }
@@ -55,86 +68,80 @@ public class BTree<E extends Comparable<E>> {
     }
 
     private void insertarEnNodo(BNode<E> nodo, E clave, BNode<E> hijoDer, int pos) {
-        for (int i = orden - 2; i > pos; i--) {
+        for (int i = nodo.claves.size() - 1; i > pos; i--) {
             nodo.claves.set(i, nodo.claves.get(i - 1));
+            nodo.hijos.set(i + 1, nodo.hijos.get(i));
         }
-        for (int i = orden - 1; i > pos + 1; i--) {
-            nodo.hijos.set(i, nodo.hijos.get(i - 1));
-        }
-
         nodo.claves.set(pos, clave);
         nodo.hijos.set(pos + 1, hijoDer);
     }
 
-    private E dividirNodo(BNode<E> nodo, E clave, BNode<E> hijoDer, int pos) {
-        int mid = (orden - 1) / 2;
+    private E dividirNodo(BNode<E> nodo, E clave, int posClave) {
+    // Crear listas temporales completas con claves e hijos actuales
+    ArrayList<E> tempClaves = new ArrayList<>();
+    ArrayList<BNode<E>> tempHijos = new ArrayList<>();
 
-        ArrayList<E> clavesTemp = new ArrayList<>(orden);
-        ArrayList<BNode<E>> hijosTemp = new ArrayList<>(orden + 1);
+    // Agregar claves actuales ignorando nulls
+    for (E c : nodo.claves) {
+        if (c != null) tempClaves.add(c);
+    }
+    // Insertar la nueva clave en la posición correcta
+    tempClaves.add(posClave, clave);
 
-        for (int i = 0; i < orden - 1; i++)
-            clavesTemp.add(nodo.claves.get(i));
-        clavesTemp.add(null); 
+    // Agregar hijos actuales
+    for (BNode<E> h : nodo.hijos) {
+        tempHijos.add(h);
+    }
+    // Insertar el nuevo hijo (nDes) en la posición adecuada
+    tempHijos.add(posClave + 1, nDes);
 
-        for (int i = 0; i < orden; i++)
-            hijosTemp.add(nodo.hijos.get(i));
-        hijosTemp.add(null); 
+    int mid = tempClaves.size() / 2;
+    E mediana = tempClaves.get(mid);
 
-        // insertar nueva clave
-        for (int i = orden - 1; i > pos; i--)
-            clavesTemp.set(i, clavesTemp.get(i - 1));
-        clavesTemp.set(pos, clave);
+    // Crear nuevo nodo derecho
+    nDes = new BNode<>(orden, nodo.esHoja);
 
-        for (int i = orden; i > pos + 1; i--)
-            hijosTemp.set(i, hijosTemp.get(i - 1));
-        hijosTemp.set(pos + 1, hijoDer);
+    // Limpiar el nodo original
+    for (int i = 0; i < orden - 1; i++) {
+        nodo.claves.set(i, null);
+        nodo.hijos.set(i, null);
+    }
+    nodo.hijos.set(orden - 1, null);
 
-        nodo.claves = new ArrayList<>(orden - 1);
-        nodo.hijos = new ArrayList<>(orden);
-        for (int i = 0; i < orden - 1; i++) nodo.claves.add(null);
-        for (int i = 0; i < orden; i++) nodo.hijos.add(null);
+    // Rellenar nodo izquierdo con claves < mediana
+    for (int i = 0; i < mid; i++) {
+        nodo.claves.set(i, tempClaves.get(i));
+        nodo.hijos.set(i, tempHijos.get(i));
+    }
+    nodo.hijos.set(mid, tempHijos.get(mid));
 
-        nDes = new BNode<>(orden, nodo.esHoja);
+    // Rellenar nuevo nodo derecho con claves > mediana
+    for (int i = mid + 1, j = 0; i < tempClaves.size(); i++, j++) {
+        nDes.claves.set(j, tempClaves.get(i));
+        nDes.hijos.set(j, tempHijos.get(i));
+    }
+    nDes.hijos.set(tempClaves.size() - mid - 1, tempHijos.get(tempClaves.size()));
 
-        for (int i = 0; i < mid; i++) {
-            nodo.claves.set(i, clavesTemp.get(i));
-            nodo.hijos.set(i, hijosTemp.get(i));
-        }
-        nodo.hijos.set(mid, hijosTemp.get(mid));
+    return mediana;
+}
+    
+    public void imprimir() {
+    imprimir(this.root, 0);
+}
 
-        E mediana = clavesTemp.get(mid);
+private void imprimir(BNode<E> nodo, int nivel) {
+    if (nodo == null) return;
+    
+    System.out.print("    ".repeat(nivel));
+    System.out.println(nodo);
 
-        for (int i = mid + 1, j = 0; i < clavesTemp.size(); i++, j++) {
-            if (j < orden - 1) nDes.claves.set(j, clavesTemp.get(i));
-        }
-
-        for (int i = mid + 1, j = 0; i < hijosTemp.size(); i++, j++) {
-            if (j < orden) nDes.hijos.set(j, hijosTemp.get(i));
-        }
-
-        return mediana;
+    int hijosValidos = 0;
+    for (BNode<E> hijo : nodo.hijos) {
+        if (hijo != null) hijosValidos++;
     }
 
-    @Override
-    public String toString() {
-        if (root == null) return "Árbol vacío.";
-        return imprimirRecursivo(root, 0);
+    for (int i = 0; i < hijosValidos; i++) {
+        imprimir(nodo.hijos.get(i), nivel + 1);
     }
-
-    private String imprimirRecursivo(BNode<E> nodo, int nivel) {
-        String s = "";
-
-        for (int i = 0; i < nivel; i++) s += "    ";
-        s += "[ " + nodo + " ]\n";
-
-        if (!nodo.esHoja) {
-            for (BNode<E> hijo : nodo.hijos) {
-                if (hijo != null) {
-                    s += imprimirRecursivo(hijo, nivel + 1);
-                }
-            }
-        }
-
-        return s;
-    }
+}
 }

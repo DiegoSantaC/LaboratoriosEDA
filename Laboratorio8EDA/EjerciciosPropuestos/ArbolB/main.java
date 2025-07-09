@@ -5,7 +5,7 @@ import java.util.*;
 public class main {
 
     public static void main(String[] args) {
-         BTree<Integer> arbol=new BTree<Integer>(4);    
+         BTree<Integer> arbol=new BTree<Integer>(5);    
          arbol.insert(100);
          arbol.insert(200);
          arbol.insert(300);
@@ -18,8 +18,12 @@ public class main {
          arbol.insert(360);
          arbol.insert(355);
          arbol.insert(150);
-
-         System.out.print(arbol);
+         arbol.insert(175);
+         arbol.insert(120);
+         arbol.insert(190);        
+         
+         
+         arbol.imprimir();
     }
     
 }
