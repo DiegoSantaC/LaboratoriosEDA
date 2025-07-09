@@ -28,13 +28,24 @@ public class BNode<E extends Comparable<E>> {
 
     public boolean searchNode(E data, int[] pos) {
         for (int i = 0; i < claves.size(); i++) {
-            if(data.equals(claves.get(i))){
-                pos[0]=i;
+            E clave = claves.get(i);
+            if (clave == null) {
+                pos[0] = i;
+                return false;
+            }
+            if (data.compareTo(clave) < 0) {
+                pos[0] = i;
+                return false;
+            }
+            if (data.equals(clave)) {
+                pos[0] = i;
                 return true;
-            } 
-        } return false;
+            }
+        }
+        pos[0] = claves.size();
+        return false;
     }
-
+    
     @Override
     public String toString() {
         String s = "";

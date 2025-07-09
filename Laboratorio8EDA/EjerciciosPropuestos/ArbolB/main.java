@@ -23,7 +23,7 @@ public class main {
          arbol.insert(190);        
          
          
-         arbol.imprimir();
+         System.out.print(arbol);
     }
     
 }
