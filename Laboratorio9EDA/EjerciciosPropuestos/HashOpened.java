@@ -1,7 +1,6 @@
 
 package Laboratorio9EDA.EjerciciosPropuestos;
-import Laboratorio4EDA.EjerciciosPropuestos.EjercicioP5.LinkedList;
-import Laboratorio4EDA.EjerciciosPropuestos.EjercicioP5.Node;
+
 
 
 public class HashOpened<E> {
@@ -9,9 +8,9 @@ public class HashOpened<E> {
 
     @SuppressWarnings("unchecked")
     public HashOpened(int capacity) {
-        table = new Laboratorio4EDA.EjerciciosPropuestos.EjercicioP5.LinkedList[capacity];
+        table = new LinkedList[capacity];
         for (int i = 0; i < capacity; i++) {
-            table[i] = new Laboratorio4EDA.EjerciciosPropuestos.EjercicioP5.LinkedList<>();
+            table[i] = new LinkedList<>();
         }
     }
 
