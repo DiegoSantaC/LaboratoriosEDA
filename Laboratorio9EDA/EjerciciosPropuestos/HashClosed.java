@@ -33,6 +33,18 @@ public class HashClosed<E> {
         return false; // si la tabla esta llena
     }
 
+    public Register<E> search(int key) {
+        int index = hash(key);
+        int originalIndex = index;
+        do {
+            if (table[index] != null && table[index].getKey() == key && !table[index].isDeleted()) {
+                return table[index];
+            }
+            index = (index + 1) % table.length;
+        } while (table[index] != null && index != originalIndex);
+        return null;
+    }
+
     public void printTable() {
         System.out.println("\n--- Tabla Hash Cerrada ---");
         for (int i = 0; i < table.length; i++) {
