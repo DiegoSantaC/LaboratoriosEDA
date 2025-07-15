@@ -33,6 +33,20 @@ public class HashClosed<E> {
         return false; // si la tabla esta llena
     }
 
+    public boolean delete(int key) {
+        int index = hash(key);
+        int originalIndex = index;
+        do {
+            if (table[index] != null && table[index].getKey() == key && !table[index].isDeleted()) {
+                table[index].delete();
+                size--;
+                return true;
+            }
+            index = (index + 1) % table.length;
+        } while (index != originalIndex);
+        return false;
+    }
+
     public Register<E> search(int key) {
         int index = hash(key);
         int originalIndex = index;
