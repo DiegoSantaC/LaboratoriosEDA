@@ -1,68 +1,43 @@
 
 package Laboratorio9EDA.EjerciciosResueltos;
-import java.util.Scanner;
 
 public class main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        HashOpened<String> hash = new HashOpened<>(10);
+        System.out.println("El tamanio de la tabla es: 8.");
+        HashOpened<String> hash = new HashOpened<>(8);
 
-        int opcion;
-        do {
-            System.out.println("\n--- MENÚ HASH ABIERTO ---");
-            System.out.println("1. Insertar");
-            System.out.println("2. Buscar");
-            System.out.println("3. Eliminar");
-            System.out.println("4. Mostrar tabla");
-            System.out.println("0. Salir");
-            System.out.print("Elige una opción: ");
-            opcion = sc.nextInt();
-            sc.nextLine(); // limpiar buffer
+        System.out.println("Agregar el elemento: clave: 5, valor: Pepe.");
+        hash.insert(new Register<>(5, "Pepe"));
 
-            switch (opcion) {
-                case 1:
-                    System.out.print("Ingrese clave (int): ");
-                    int clave = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Ingrese valor (String): ");
-                    String valor = sc.nextLine();
-                    Register<String> reg = new Register<>(clave, valor);
-                    hash.insert(reg);
-                    break;
+        System.out.println("Agregar el elemento: clave: 21, valor: Jesus.");
+        hash.insert(new Register<>(21, "Jesus"));
 
-                case 2:
-                    System.out.print("Ingrese clave a buscar: ");
-                    int claveBuscar = sc.nextInt();
-                    Register<String> encontrado = hash.search(claveBuscar);
-                    if (encontrado != null) {
-                        System.out.println("Encontrado: " + encontrado);
-                    } else {
-                        System.out.println("No se encontró la clave.");
-                    }
-                    break;
+        System.out.println("Agregar el elemento: clave: 19, valor: Juan.");
+        hash.insert(new Register<>(19, "Juan"));
 
-                case 3:
-                    System.out.print("Ingrese clave a eliminar: ");
-                    int claveEliminar = sc.nextInt();
-                    hash.delete(claveEliminar);
-                    break;
+        System.out.println("Agregar el elemento: clave: 16, valor: Maria.");
+        hash.insert(new Register<>(16, "Maria"));
 
-                case 4:
-                    hash.showTable();
-                    break;
+        System.out.println("Agregar el elemento: clave: 21, valor: DUPLICADO.");
+        hash.insert(new Register<>(21, "DUPLICADO")); // debe decir clave duplicada
 
-                case 0:
-                    System.out.println("¡Programa finalizado!");
-                    break;
+        System.out.println("Mostrar tabla hash resultante.");
+        hash.showTable();
 
-                default:
-                    System.out.println("Opción no válida.");
-            }
-        } while (opcion != 0);
+        System.out.println("Buscar los elementos por clave: 5, 21.");
+        Register<String> r1 = hash.search(5);
+        System.out.println(r1 != null ? "Encontrado: " + r1 : "No encontrado");
 
-        sc.close();
-    }
+        Register<String> r2 = hash.search(21);
+        System.out.println(r2 != null ? "Encontrado: " + r2 : "No encontrado");
+
+        System.out.println("Eliminar los elementos por clave. 21, 100.");
+        hash.delete(21); // válido
+        hash.delete(100); // inexistente
+
+        System.out.println("Mostrar tabla hash resultante.");
+        hash.showTable();
+    }     
 }
-    
 

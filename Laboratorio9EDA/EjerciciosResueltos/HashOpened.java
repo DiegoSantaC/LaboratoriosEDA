@@ -51,7 +51,7 @@ public class HashOpened<E>{
         for (int i = 0; i < table.length; i++) {
         System.out.print(i + ": ");
         if (table[i].isEmpty()) {
-        System.out.println("[VACÍO]");
+        System.out.println("[VACIO]");
         } else {
         for (Register<E> r : table[i]) {
         System.out.print(r + " -> ");
